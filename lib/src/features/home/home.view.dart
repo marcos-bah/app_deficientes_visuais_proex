@@ -27,15 +27,7 @@ class _HomeViewState extends State<HomeView> {
 
   @override
   Widget build(BuildContext context) {
-    final accelerometer = _controller.accelerometerValues
-        ?.map((double v) => v.toStringAsFixed(1))
-        .toList();
-    final gyroscope = _controller.gyroscopeValues
-        ?.map((double v) => v.toStringAsFixed(1))
-        .toList();
-    final userAccelerometer = _controller.userAccelerometerValues
-        ?.map((double v) => v.toStringAsFixed(1))
-        .toList();
+    _controller.getDataSensors();
 
     return Scaffold(
       appBar: AppBar(
@@ -48,15 +40,16 @@ class _HomeViewState extends State<HomeView> {
           children: <Widget>[
             Padding(
               padding: const EdgeInsets.all(16.0),
-              child: Text("Acelerômetro: $accelerometer"),
+              child: Text("Acelerômetro: ${_controller.accelerometer}"),
             ),
             Padding(
               padding: const EdgeInsets.all(16.0),
-              child: Text("Acelerômetro de Usuário: $userAccelerometer"),
+              child: Text(
+                  "Acelerômetro de Usuário: ${_controller.userAccelerometer}"),
             ),
             Padding(
               padding: const EdgeInsets.all(16.0),
-              child: Text("Giroscópio: $gyroscope"),
+              child: Text("Giroscópio: ${_controller.gyroscope}"),
             ),
             TextButton(
               onPressed: () {

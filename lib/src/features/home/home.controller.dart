@@ -27,6 +27,18 @@ class HomeController {
         },
       ),
     );
+
+    getDataSensors();
+  }
+
+  void getDataSensors() {
+    accelerometer =
+        accelerometerValues?.map((double v) => v.toStringAsFixed(1)).toList();
+    gyroscope =
+        gyroscopeValues?.map((double v) => v.toStringAsFixed(1)).toList();
+    userAccelerometer = userAccelerometerValues
+        ?.map((double v) => v.toStringAsFixed(1))
+        .toList();
   }
 
   void dispose() {
