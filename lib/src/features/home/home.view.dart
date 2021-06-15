@@ -13,6 +13,7 @@ class HomeView extends StatefulWidget {
 }
 
 class _HomeViewState extends State<HomeView> {
+  // ignore: unused_field
   late HomeController _controller;
   late LocationController _locationController;
   late SensorsController _sensorsController;
