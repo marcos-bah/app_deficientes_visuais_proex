@@ -59,7 +59,7 @@ class _HomeViewState extends State<HomeView> {
             ),
             Padding(
               padding: const EdgeInsets.all(16.0),
-              child: Text("Location: ${_locationController.locationData}"),
+              child: Text("Location: "),
             ),
             TextButton(
               onPressed: () {

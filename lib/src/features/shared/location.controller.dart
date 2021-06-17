@@ -1,14 +1,16 @@
 import 'package:location/location.dart';
 
 class LocationController {
-  LocationController();
+  LocationController() {
+    location.getLocation().then((value) => locationData = value);
+    getLocation();
+  }
 
   //location plugin
   Location location = new Location();
   late bool _serviceEnabled;
   late PermissionStatus _permissionGranted;
   // ignore: unused_field
-  late LocationData _locationData;
   late LocationData locationData;
 
   void getLocation() async {
@@ -28,10 +30,13 @@ class LocationController {
       }
     }
 
-    _locationData = await location.getLocation();
     location.onLocationChanged.listen((LocationData currentLocation) {
       locationData = currentLocation;
       print(currentLocation);
+      print(currentLocation.accuracy);
+      print(currentLocation.altitude);
+      print(currentLocation.satelliteNumber);
+      print(currentLocation.verticalAccuracy);
     });
   }
 }
