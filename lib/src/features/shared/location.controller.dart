@@ -11,7 +11,7 @@ class LocationController {
   late bool _serviceEnabled;
   late PermissionStatus _permissionGranted;
   // ignore: unused_field
-  late LocationData locationData;
+  LocationData locationData = LocationData.fromMap({});
 
   void getLocation() async {
     _serviceEnabled = await location.serviceEnabled();
