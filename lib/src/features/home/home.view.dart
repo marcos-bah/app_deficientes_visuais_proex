@@ -59,7 +59,28 @@ class _HomeViewState extends State<HomeView> {
             ),
             Padding(
               padding: const EdgeInsets.all(16.0),
-              child: Text("Location: "),
+              child: Text(
+                  "Location: ${_locationController.locationData.latitude} / ${_locationController.locationData.latitude}"),
+            ),
+            Padding(
+              padding: const EdgeInsets.all(16.0),
+              child: Text(
+                  "Acuracia: ${_locationController.locationData.accuracy} metros"),
+            ),
+            Padding(
+              padding: const EdgeInsets.all(16.0),
+              child: Text(
+                  "Alt: ${_locationController.locationData.altitude} metros"),
+            ),
+            Padding(
+              padding: const EdgeInsets.all(16.0),
+              child: Text(
+                  "Velocidade: ${_locationController.locationData.speed} m/s"),
+            ),
+            Padding(
+              padding: const EdgeInsets.all(16.0),
+              child: Text(
+                  "Acuracia Velocidade: ${_locationController.locationData.speedAccuracy} m/s "),
             ),
             TextButton(
               onPressed: () {
