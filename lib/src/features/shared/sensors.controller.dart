@@ -1,21 +1,23 @@
 import 'dart:async';
 
+import 'package:rx_notifier/rx_notifier.dart';
 import 'package:sensors_plus/sensors_plus.dart';
 
 class SensorsController {
-  List<double>? accelerometerValues;
-  List<double>? userAccelerometerValues;
-  List<double>? gyroscopeValues;
+  var accelerometerValues = RxList<double>([]);
+  var userAccelerometerValues = RxList<double>([]);
+  var gyroscopeValues = RxList<double>([]);
   final _streamSubscriptions = <StreamSubscription<dynamic>>[];
-  var accelerometer;
-  var gyroscope;
-  var userAccelerometer;
+  var accelerometer = RxList<String>([]);
+  var gyroscope = RxList<String>([]);
+  var userAccelerometer = RxList<String>([]);
 
   SensorsController() {
     _streamSubscriptions.add(
       gyroscopeEvents.listen(
         (GyroscopeEvent event) {
-          gyroscopeValues = <double>[event.x, event.y, event.z];
+          gyroscopeValues = <double>[event.x, event.y, event.z].asRx();
+          getDataSensor();
         },
       ),
     );
@@ -23,7 +25,8 @@ class SensorsController {
     _streamSubscriptions.add(
       userAccelerometerEvents.listen(
         (UserAccelerometerEvent event) {
-          userAccelerometerValues = <double>[event.x, event.y, event.z];
+          userAccelerometerValues = <double>[event.x, event.y, event.z].asRx();
+          getDataSensor();
         },
       ),
     );
@@ -32,13 +35,16 @@ class SensorsController {
   }
 
   void getDataSensor() {
-    accelerometer =
-        accelerometerValues?.map((double v) => v.toStringAsFixed(1)).toList();
+    accelerometer = accelerometerValues
+        .map((double v) => v.toStringAsFixed(1))
+        .toList()
+        .asRx();
     gyroscope =
-        gyroscopeValues?.map((double v) => v.toStringAsFixed(1)).toList();
+        gyroscopeValues.map((double v) => v.toStringAsFixed(1)).toList().asRx();
     userAccelerometer = userAccelerometerValues
-        ?.map((double v) => v.toStringAsFixed(1))
-        .toList();
+        .map((double v) => v.toStringAsFixed(1))
+        .toList()
+        .asRx();
   }
 
   void dispose() {
