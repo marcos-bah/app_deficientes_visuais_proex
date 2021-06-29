@@ -30,13 +30,15 @@ class LocationController {
       }
     }
 
-    location.onLocationChanged.listen((LocationData currentLocation) {
-      locationData = currentLocation;
-      print(currentLocation);
-      print(currentLocation.accuracy);
-      print(currentLocation.altitude);
-      print(currentLocation.satelliteNumber);
-      print(currentLocation.verticalAccuracy);
-    });
+    location.onLocationChanged.listen(
+      (LocationData currentLocation) {
+        locationData = currentLocation;
+
+        print(currentLocation.accuracy);
+        print(currentLocation.altitude);
+        print(currentLocation.satelliteNumber);
+        print(currentLocation.verticalAccuracy);
+      },
+    );
   }
 }
