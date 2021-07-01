@@ -13,6 +13,16 @@ class SensorsController {
   var userAccelerometer = RxList<String>([]);
 
   SensorsController() {
+
+    _streamSubscriptions.add(
+      accelerometerEvents.listen(
+        (AccelerometerEvent event) {
+          accelerometerValues = <double>[event.x, event.y, event.z].asRx();
+          getDataSensor();
+        },
+      ),
+    );
+
     _streamSubscriptions.add(
       gyroscopeEvents.listen(
         (GyroscopeEvent event) {
