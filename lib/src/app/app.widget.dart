@@ -1,4 +1,4 @@
-import 'package:app_deficientes_visuais/src/features/home/home.view.dart';
+import 'package:app_deficientes_visuais/src/features/step-count/step.view.dart';
 import 'package:flutter/material.dart';
 
 class AppWidget extends StatelessWidget {
@@ -10,7 +10,7 @@ class AppWidget extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: HomeView(title: 'Qualquer coisa'),
+      home: StepView(),
     );
   }
 }

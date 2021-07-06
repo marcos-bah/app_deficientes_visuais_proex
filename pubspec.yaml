@@ -32,6 +32,7 @@ dependencies:
   location: ^4.3.0
   geolocator: ^7.1.0
   rx_notifier: ^1.1.0
+  pedometer: ^3.0.0
 
 dev_dependencies:
   flutter_test:
