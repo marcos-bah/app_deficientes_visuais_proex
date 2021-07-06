@@ -1,3 +1,4 @@
+import 'package:app_deficientes_visuais/src/features/google-maps/map_sample.dart';
 import 'package:app_deficientes_visuais/src/features/step-count/step.view.dart';
 import 'package:flutter/material.dart';
 
@@ -10,7 +11,7 @@ class AppWidget extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: StepView(),
+      home: MapSample(),
     );
   }
 }
